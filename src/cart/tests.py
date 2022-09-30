@@ -25,8 +25,26 @@ def test_return_cart():
         ]
     }
 
+
 # TEST ADD PRODUCT TO THE CART
-# def test_
+def test_add_product_to_cart():
+    db[1] = {
+        "id": 1,
+        "lines": []
+    }
+
+    response = client.post(
+        "/cart/1/products/add/", data={"product": 50776})
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "id": 1,
+        "lines": [
+            {"product": 50776},
+        ]
+    }
+
+
 
 
 # BEFORE MOVING ON...
